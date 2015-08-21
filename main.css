@@ -1,0 +1,27 @@
+body {
+    padding: 5px;
+}
+
+.clickable :hover {
+    cursor: pointer;
+}
+
+#stopwatch .row {
+    margin: 5px 0;
+}
+
+.bigButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    padding-right: 15px;
+    width: 100%;
+}
+
+#actionsSection > div {
+    border: 1px solid #DDD;
+    background: #eeeeee;
+    text-align: center;
+}

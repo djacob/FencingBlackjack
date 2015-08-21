@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FencingBlackjackApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>Fencing Blackjack</title>
+</head>
+<body ng-controller="AppController as app" class="container">
+
+<section id="stopwatch" ng-controller="TimerController as timer">
+    <div class="row">
+        <button type="button" class="btn btn-success col-xs-6" ng-click="timer.start()">Start</button>
+        <button type="button" class="btn btn-danger col-xs-6" ng-click="timer.reset()">Reset</button>
+    </div>
+    <div ng-if="timer.interval" class="row">
+        <button type="button" class="btn btn-primary col-xs-12 bigButton" ng-click="timer.stop()">
+            <h1>{{time}}</h1>
+            <h1>STOP</h1>
+        </button>
+    </div>
+    <div class="row">
+        <h1 style="text-align:center">{{time}}</h1>
+    </div>
+</section>
+
+<div style="text-align:center" class="row">
+    <div ng-repeat="fencer in app.fencers" class="col-xs-6">
+        <h3>Score: {{fencer.score}}</h3>
+
+        <table class="table table-bordered table-responsive">
+            <tbody>
+            <tr ng-repeat="(action, details) in app.terms"
+                ng-click="fencer.score = fencer.score + details.points">
+                <td style="background: {{fencer.score + details.points > app.goal ? 'purple' : details.color}}">
+                    {{action}} - {{details.points}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
